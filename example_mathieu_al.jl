@@ -15,5 +15,7 @@ nevalobj=neval_obj(nlp)
 nevalhess=neval_hess(nlp)
 nevaljac=neval_jac(nlp)
 
+@printf("%s  \n", "Information on test: neval, nevalhess, nevaljac, iter, f(x)")
+@printf("%5i \t %5i \t %5i \t %5i \t %10.10f  \n", nevalobj, nevalhess, nevaljac, iter, fx )
 
-@printf("%5i \t %5i \t %5i \t %5i \t %10.10f", nevalobj, nevalhess, nevaljac, iter, fx )
+println(xk)

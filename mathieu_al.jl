@@ -76,7 +76,7 @@ function Augmented_Lagrangian_Practical(nlp:: AbstractNLPModel;
         #Création du nouveau modèle sans contraintes à optimiser
         nlp_unconstrained=ADNLPModel(x->L(x), xk, lvar=nlp.meta.lvar, uvar=nlp.meta.uvar);
         result=tron(nlp_unconstrained, atol=omega_k, rtol=0,max_eval=1000);             
-        @printf("%s  \n","ATTENTION! tron n'a pas pu résoudre le sous-problème")
+        @printf("%s  \n \n","ATTENTION! tron n'a pas pu résoudre le sous-problème")
             
 
         xk=result.solution;
@@ -104,13 +104,14 @@ function Augmented_Lagrangian_Practical(nlp:: AbstractNLPModel;
             if optimal
                 fx=f(xk);
                 fin=true;
-                @printf("%s  \n","Solution trouvée (first order)")
+                @printf("%s  \n \n","Solution trouvée (first order) at xk: ")
+                println(xk);
                 break;
             end
             if iter>=nm_itmax 
                 fx=f(xk);
                 fin=true;
-                @printf("%s  \n","Timeout (iter>=itermax) ")
+                @printf("%s  \n \n","Timeout (iter>=itermax) ")
                 break;
             end   
          
